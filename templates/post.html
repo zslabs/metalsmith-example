@@ -1,4 +1,10 @@
-{% include 'partials/layout/header.html' %}
-  <h1>Post Layout</h1>
+{% extends "base.html" %}
+
+{% block header_misc %}test post header{% endblock %}
+
+{% block body %}
+  <h1>Some content from the post template</h1>
   {{ contents | safe }}
-{% include 'partials/layout/footer.html' %}
+{% endblock %}
+
+{% block footer_misc %}test post footer{% endblock %}

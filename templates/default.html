@@ -1,4 +1,6 @@
-{% include 'partials/layout/header.html' %}
-  <h1>Default Layout</h1>
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Some content from the default template</h1>
   {{ contents | safe }}
-{% include 'partials/layout/footer.html' %}
+{% endblock %}

@@ -13,7 +13,6 @@ nunjucks.configure('./templates', {watch: false});
 var ms_moveUp = require('metalsmith-move-up');
 var ms_changed = require('metalsmith-changed');
 var ms_layouts = require('metalsmith-layouts');
-var ms_filenames = require('metalsmith-filenames');
 var ms_inPlace = require('metalsmith-in-place');
 var ms_markdown = require('metalsmith-markdown');
 var ms_permalinks = require('metalsmith-permalinks');
@@ -33,10 +32,9 @@ gulp.task('metalsmith', function() {
       '.md': '.html' // build if src/file.md is newer than build/file.html
     }
   }))
-  .use(ms_filenames())
   .use(ms_collections({
     pages: {
-      pattern: 'pages/**/*.md'
+      pattern: 'pages/**/*.html'
     },
     articles: {
       pattern: 'articles/*.md',
@@ -50,13 +48,15 @@ gulp.task('metalsmith', function() {
       pattern: 'articles/*.md',
       metadata: {
         'layout': 'post.html'
-      }
+      },
+      preserve: true
     },
     {
       pattern: 'pages/*.md',
       metadata: {
         'layout': 'default.html'
-      }
+      },
+      preserve: true
     }
   ]))
   .use(ms_inPlace({

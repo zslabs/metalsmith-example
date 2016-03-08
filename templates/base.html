@@ -3,25 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
+    <title>{{ title }}</title>
     <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script>
-    
+    {% if header_css %}
+      css stuff here
+    {% else %}
       no css stuff found
-    
-    
+    {% endif %}
+    {% block header_misc %}{% endblock %}
   </head>
   <body>
-    
-  <h1>Some content from the default template</h1>
-  
-Homepage content
-
-
-
-<p>test</p>
-&lt;p&gt;test&lt;/p&gt;
-
-
-    
+    {% block body %}{% endblock %}
+    {% block footer_misc %}{% endblock %}
   </body>
   </html>
